@@ -18,7 +18,9 @@
       <tbody v-if="alunos.length">
         <tr v-for="(aluno, index) in alunos" :key="index">
           <td>{{aluno.id}}</td>
-          <td>{{aluno.nome}} {{aluno.sobrenome}}</td>
+         <router-link :to="`/aluno-detalhe/${aluno.id}`" tag="td" style="cursor:pointer">
+              {{aluno.nome}} {{aluno.sobrenome}}
+          </router-link>
           <td>
             <button class="btn btn_danger" @click="remover(aluno)">Remover</button>
           </td>

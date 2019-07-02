@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Alunos from './components/Aluno/Alunos.vue';
+import AlunoDetalhe from './components/Aluno/AlunoDetalhe.vue';
 import Professor from './components/Professor/Professor.vue';
 import Sobre from './components/Sobre/Sobre.vue';
 
@@ -19,8 +20,13 @@ export default new Router({
             component: Alunos
         },
         {
+            path: '/aluno-detalhe/:aluno_id',
+            name : 'AlunoDetalhe',
+            component: AlunoDetalhe
+        },
+        {
             path: '/todos-alunos',
-            name : 'Alunos',
+            name : 'Aluno',
             component: Alunos
         },
         {
