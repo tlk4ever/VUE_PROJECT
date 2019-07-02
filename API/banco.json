@@ -1,29 +1,91 @@
 {
+  "professores": [
+    {
+      "id": 1,
+      "nome": "Professor Um",
+      "sobrenome": "Morais"
+    },
+    {
+      "id": 2,
+      "nome": "Professor Dois",
+      "sobrenome": "Valentim"
+    },
+    {
+      "id": 3,
+      "nome": "Professor Três",
+      "sobrenome": "Rubens"
+    }
+  ],
   "alunos": [
     {
       "id": 2,
       "nome": "Laura",
-      "sobrenome": "Brito"
+      "sobrenome": "Brito",
+      "professor": {
+        "id": 1,
+        "nome": "Professor Um",
+        "sobrenome": "Morais"
+      }
     },
     {
       "id": 3,
       "nome": "Kleber",
-      "sobrenome": "Brito"
+      "sobrenome": "Brito",
+      "professor": {
+        "id": 1,
+        "nome": "Professor Um",
+        "sobrenome": "Morais"
+      }
     },
     {
       "nome": "Karina",
       "sobrenome": "",
+      "professor": {
+        "id": 1,
+        "nome": "Professor Um",
+        "sobrenome": "Morais"
+      },
       "id": 4
     },
     {
       "nome": "Thiago Freitas",
       "sobrenome": "",
+      "professor": {
+        "id": 3,
+        "nome": "Professor Três",
+        "sobrenome": "Rubens"
+      },
       "id": 5
     },
     {
       "nome": "Maria",
       "sobrenome": "",
+      "professor": {
+        "id": 3,
+        "nome": "Professor Três",
+        "sobrenome": "Rubens"
+      },
       "id": 6
+    },
+    {
+      "nome": "Lyanna",
+      "sobrenome": "",
+      "professor": {
+        "id": 2,
+        "nome": "Professor Dois",
+        "sobrenome": "Valentim"
+      },
+      "id": 7
+    },
+    {
+      "nome": "Alex",
+      "sobrenome": "",
+      "professor": {
+        "id": 2,
+        "nome": "Professor Dois",
+        "sobrenome": "Valentim"
+      },
+      "id": 8
     }
   ]
 }

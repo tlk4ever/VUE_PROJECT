@@ -1,7 +1,8 @@
 <template>
   <div>
-    <titulo texto="Alunos" />
-    <div>
+    <titulo
+      :texto="professorId != undefined ? 'Professor: ' + professor.nome + ' ' + professor.sobrenome : 'Todos os Alunos'" />
+    <div v-if="professorId != undefined ">
       <input type="text" placeholder="Nome do Aluno" v-model="nome" @keyup.enter="addAluno()">
       <button class="btn btnInput" @click="addAluno()">Adicionar</button>
     </div>
@@ -39,20 +40,33 @@
     data() {
       return {
         nome: '',
-        alunos: []
+        alunos: [],
+        professor: {},
+        professorId: this.$route.params.professor_id
       }
     },
     created() {
-      this.$http.get("http://localhost:3000/alunos")
+
+      let link = "http://localhost:3000/alunos";
+      if (this.professorId) {
+        this.carregarProfessor();
+        link = link + "?professor.id=" + this.professorId;
+      }
+      this.$http.get(link)
         .then(res => res.json())
-        .then(alunos => this.alunos = alunos)
+        .then(alunos => this.alunos = alunos);
     },
     props: {},
     methods: {
       addAluno() {
         let _aluno = {
           nome: this.nome,
-          sobrenome : ""
+          sobrenome: "",
+          professor: {
+            id: this.professor.id,
+            nome: this.professor.nome,
+            sobrenome: this.professor.sobrenome
+          }
         };
 
         this.$http.post("http://localhost:3000/alunos", _aluno)
@@ -65,11 +79,17 @@
       remover(aluno) {
 
         this.$http.delete(`http://localhost:3000/alunos/${aluno.id}`)
-          .then(()=>{
+          .then(() => {
             let indice = this.alunos.indexOf(aluno);
-          this.alunos.splice(indice, 1);
+            this.alunos.splice(indice, 1);
           });
-
+      },
+      carregarProfessor() {
+        this.$http.get("http://localhost:3000/professores/" + this.professorId)
+          .then(res => res.json())
+          .then(professor => {
+            this.professor = professor;
+          })
       }
     },
   }
@@ -78,6 +98,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   input {
+    width: calc(100% - 195px);
     border: 0;
     padding: 20px;
     font-size: 1.3em;
