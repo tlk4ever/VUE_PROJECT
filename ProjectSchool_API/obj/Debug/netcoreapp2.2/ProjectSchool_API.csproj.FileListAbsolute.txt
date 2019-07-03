@@ -1,0 +1,14 @@
+C:\Users\thiago.freitas\Documents\pessoal\asp-vue\VUE_PROJECT\ProjectSchool_API\bin\Debug\netcoreapp2.2\ProjectSchool_API.deps.json
+C:\Users\thiago.freitas\Documents\pessoal\asp-vue\VUE_PROJECT\ProjectSchool_API\bin\Debug\netcoreapp2.2\ProjectSchool_API.runtimeconfig.json
+C:\Users\thiago.freitas\Documents\pessoal\asp-vue\VUE_PROJECT\ProjectSchool_API\bin\Debug\netcoreapp2.2\ProjectSchool_API.runtimeconfig.dev.json
+C:\Users\thiago.freitas\Documents\pessoal\asp-vue\VUE_PROJECT\ProjectSchool_API\bin\Debug\netcoreapp2.2\ProjectSchool_API.dll
+C:\Users\thiago.freitas\Documents\pessoal\asp-vue\VUE_PROJECT\ProjectSchool_API\bin\Debug\netcoreapp2.2\ProjectSchool_API.pdb
+C:\Users\thiago.freitas\Documents\pessoal\asp-vue\VUE_PROJECT\ProjectSchool_API\obj\Debug\netcoreapp2.2\ProjectSchool_API.csprojAssemblyReference.cache
+C:\Users\thiago.freitas\Documents\pessoal\asp-vue\VUE_PROJECT\ProjectSchool_API\obj\Debug\netcoreapp2.2\ProjectSchool_API.csproj.CoreCompileInputs.cache
+C:\Users\thiago.freitas\Documents\pessoal\asp-vue\VUE_PROJECT\ProjectSchool_API\obj\Debug\netcoreapp2.2\ProjectSchool_API.RazorAssemblyInfo.cache
+C:\Users\thiago.freitas\Documents\pessoal\asp-vue\VUE_PROJECT\ProjectSchool_API\obj\Debug\netcoreapp2.2\ProjectSchool_API.RazorAssemblyInfo.cs
+C:\Users\thiago.freitas\Documents\pessoal\asp-vue\VUE_PROJECT\ProjectSchool_API\obj\Debug\netcoreapp2.2\ProjectSchool_API.AssemblyInfoInputs.cache
+C:\Users\thiago.freitas\Documents\pessoal\asp-vue\VUE_PROJECT\ProjectSchool_API\obj\Debug\netcoreapp2.2\ProjectSchool_API.AssemblyInfo.cs
+C:\Users\thiago.freitas\Documents\pessoal\asp-vue\VUE_PROJECT\ProjectSchool_API\obj\Debug\netcoreapp2.2\ProjectSchool_API.RazorTargetAssemblyInfo.cache
+C:\Users\thiago.freitas\Documents\pessoal\asp-vue\VUE_PROJECT\ProjectSchool_API\obj\Debug\netcoreapp2.2\ProjectSchool_API.dll
+C:\Users\thiago.freitas\Documents\pessoal\asp-vue\VUE_PROJECT\ProjectSchool_API\obj\Debug\netcoreapp2.2\ProjectSchool_API.pdb
