@@ -21,10 +21,11 @@
       "id": 2,
       "nome": "Laura",
       "sobrenome": "Brito",
+      "dataNasc": "03/07/2014",
       "professor": {
-        "id": 1,
-        "nome": "Professor Um",
-        "sobrenome": "Morais"
+        "id": 2,
+        "nome": "Professor Dois",
+        "sobrenome": "Valentim"
       }
     },
     {
@@ -38,14 +39,15 @@
       }
     },
     {
+      "id": 4,
       "nome": "Karina",
-      "sobrenome": "",
+      "sobrenome": "Alves",
+      "dataNasc": "27/05/1995",
       "professor": {
         "id": 1,
         "nome": "Professor Um",
         "sobrenome": "Morais"
-      },
-      "id": 4
+      }
     },
     {
       "nome": "Thiago Freitas",
@@ -58,14 +60,14 @@
       "id": 5
     },
     {
+      "id": 6,
       "nome": "Maria",
-      "sobrenome": "",
+      "sobrenome": "Oliveira",
       "professor": {
         "id": 3,
         "nome": "Professor Três",
         "sobrenome": "Rubens"
-      },
-      "id": 6
+      }
     },
     {
       "nome": "Lyanna",

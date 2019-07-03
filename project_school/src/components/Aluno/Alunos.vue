@@ -17,11 +17,11 @@
       </thead>
       <tbody v-if="alunos.length">
         <tr v-for="(aluno, index) in alunos" :key="index">
-          <td>{{aluno.id}}</td>
-         <router-link :to="`/aluno-detalhe/${aluno.id}`" tag="td" style="cursor:pointer">
-              {{aluno.nome}} {{aluno.sobrenome}}
+          <td class="colPequeno">{{aluno.id}}</td>
+          <router-link :to="`/aluno-detalhe/${aluno.id}`" tag="td" style="cursor:pointer">
+            {{aluno.nome}} {{aluno.sobrenome}}
           </router-link>
-          <td>
+          <td class="colPequeno">
             <button class="btn btn_danger" @click="remover(aluno)">Remover</button>
           </td>
         </tr>

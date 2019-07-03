@@ -11,11 +11,11 @@
             </thead>
             <tbody v-if="professores.length">
                 <tr v-for="(professor, index) in professores" :key="index">
-                    <td>{{professor.id}}</td>
+                    <td class="colPequeno">{{professor.id}}</td>
                     <router-link :to="`/alunos/${professor.id}`" tag="td" style="cursor:pointer">
                         {{professor.nome}} {{professor.sobrenome}}
                     </router-link>
-                    <td>
+                    <td class="colPequeno">
                         {{professor.qtdAlunos}}
                     </td>
                 </tr>
@@ -71,4 +71,8 @@ import Titulo from "../_share/Titulo";
 </script>
 
 <style lang="scss" scoped>
+.colPequeno{
+    text-align:center; 
+    width:15%;
+}
 </style>
