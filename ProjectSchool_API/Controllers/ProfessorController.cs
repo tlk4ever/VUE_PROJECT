@@ -1,4 +1,9 @@
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProjectSchool_API.Data;
+using ProjectSchool_API.Models;
 
 namespace ProjectSchool_API.Controllers
 {
@@ -6,39 +11,110 @@ namespace ProjectSchool_API.Controllers
     [ApiController]
     public class ProfessorController : Controller
     {
-        public ProfessorController()
+        private readonly IRepository _repo;
+        public ProfessorController(IRepository repo)
         {
-            
+            _repo = repo;
         }
 
         [HttpGet]
-        public IActionResult get()
+        public async Task<IActionResult> get()
         {
-            return Ok();
+            try
+            {
+                var result = await _repo.GetAllProfessoresAsync(true);
+                return Ok(result);
+            }
+            catch (System.Exception)
+            {
+                
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro no Banco de Dados");
+            }
         }
 
         [HttpGet("{ProfessorId}")]
-        public IActionResult get(int ProfessorId)
+        public async Task<IActionResult> getByProfessorId(int ProfessorId)
         {
-            return Ok();
+            try
+            {
+                var result = await _repo.GetProfessoresAsyncById(ProfessorId,true);
+                return Ok(result);
+            }
+            catch (System.Exception)
+            {
+                
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro no Banco de Dados");
+            }
         }
 
         [HttpPost]
-        public IActionResult post()
+        public async Task<IActionResult> Post(Professor model)
         {
-            return Ok();
+            try
+            {
+                _repo.Add(model);
+                
+                if(await _repo.SaveChangesAsync()){
+                    return Created($"/api/aluno/{model.Id}", model);
+                }
+                
+                return BadRequest();
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro no Banco de Dados");
+            }
+        }
+
+        private IActionResult Created(string v)
+        {
+            throw new NotImplementedException();
         }
 
         [HttpPut("{ProfessorId}")]
-        public IActionResult put(int ProfessorId)
+        public async Task<IActionResult> put(int ProfessorId, Professor model)
         {
-            return Ok();
+            try
+            {
+                var professor = await _repo.GetProfessoresAsyncById(ProfessorId,false);
+                if(professor == null) return NotFound();
+
+                _repo.Update(model);
+
+                if(await _repo.SaveChangesAsync()){
+                    return Created($"/api/aluno/{model.Id}", model);
+                }
+
+                return BadRequest();
+            }
+            catch (System.Exception)
+            {
+                
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro no Banco de Dados");
+            }
         }
 
         [HttpDelete("{ProfessorId}")]
-        public IActionResult delete(int ProfessorId)
+        public async Task<IActionResult> delete(int ProfessorId)
         {
-            return Ok();
+            try
+            {
+                var professor = await _repo.GetProfessoresAsyncById(ProfessorId,false);
+                if(professor == null) return NotFound();
+
+                _repo.Delete(professor);
+
+                if(await _repo.SaveChangesAsync()){
+                    return Ok();
+                }
+
+                return BadRequest();
+            }
+            catch (System.Exception)
+            {
+                
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro no Banco de Dados");
+            }
         }
     }
 }
