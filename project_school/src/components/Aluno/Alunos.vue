@@ -27,7 +27,11 @@
         </tr>
       </tbody>
       <tfoot v-else>
-        Nenhum Aluno Cadastrado.
+        <tr>
+          <td colspan="3" style="text-align:center">
+            <h5>Nenhum Aluno Cadastrado.</h5>
+          </td>
+        </tr>
       </tfoot>
     </table>
   </div>
@@ -35,6 +39,7 @@
 
 <script>
   import Titulo from "../_share/Titulo";
+  var urlApi = "http://localhost:5000/api";
   export default {
     components: {
       Titulo
@@ -49,10 +54,10 @@
     },
     created() {
 
-      let link = "http://localhost:3000/alunos";
+      let link = urlApi+"/aluno";
       if (this.professorId) {
         this.carregarProfessor();
-        link = link + "?professor.id=" + this.professorId;
+        link = link + "/ByProfessor/" + this.professorId;
       }
       this.$http.get(link)
         .then(res => res.json())
@@ -64,30 +69,28 @@
         let _aluno = {
           nome: this.nome,
           sobrenome: "",
-          professor: {
-            id: this.professor.id,
-            nome: this.professor.nome,
-            sobrenome: this.professor.sobrenome
-          }
+          dataNasc : "",
+          professorid: this.professorId,
         };
 
-        this.$http.post("http://localhost:3000/alunos", _aluno)
+        this.$http.post(`${urlApi}/aluno`, _aluno)
           .then(res => res.json())
           .then(aluno => {
             this.alunos.push(aluno);
             this.nome = "";
+            console.log(aluno);
           })
       },
       remover(aluno) {
 
-        this.$http.delete(`http://localhost:3000/alunos/${aluno.id}`)
+        this.$http.delete(`${urlApi}/aluno/${aluno.id}`)
           .then(() => {
             let indice = this.alunos.indexOf(aluno);
             this.alunos.splice(indice, 1);
           });
       },
       carregarProfessor() {
-        this.$http.get("http://localhost:3000/professores/" + this.professorId)
+        this.$http.get(`${urlApi}/professor/${this.professorId}`)
           .then(res => res.json())
           .then(professor => {
             this.professor = professor;

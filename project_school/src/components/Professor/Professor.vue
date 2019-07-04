@@ -1,6 +1,6 @@
 <template>
     <div>
-        <titulo texto="Professores" />
+        <titulo texto="Professores" :btnVoltar="true" />
         <table>
             <thead>
                 <tr>
@@ -20,13 +20,20 @@
                     </td>
                 </tr>
             </tbody>
-            <tfoot v-else>Nenhum Professor Cadastrado.</tfoot>
+            <tfoot v-else>
+                <tr>
+                    <td colspan="3" style="text-align:center">
+                        <h5>Nenhum Professor Cadastrado.</h5>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </template>
 
 <script>
 import Titulo from "../_share/Titulo";
+var urlApi = "http://localhost:5000/api";
     export default {
         components: {
             Titulo
@@ -38,7 +45,7 @@ import Titulo from "../_share/Titulo";
             }
         },
         created() {
-            this.$http.get("http://localhost:3000/alunos")
+            this.$http.get(`${urlApi}/aluno`)
             .then(res => res.json())
             .then(alunos => {
                 this.alunos = alunos;
@@ -59,7 +66,7 @@ import Titulo from "../_share/Titulo";
                 });
             },
             carregarProfessor(){
-                this.$http.get("http://localhost:3000/professores")
+                this.$http.get(`${urlApi}/professor`)
                 .then(res => res.json())
                 .then(professores =>  {
                     this.professores = professores;

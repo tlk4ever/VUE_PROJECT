@@ -36,8 +36,8 @@
                     <td class="colPequeno">Professor:</td>
                     <td>
                         <label v-if="visualizando">{{professorAluno.nome}} {{professorAluno.sobrenome}}</label>
-                        <select v-else v-model="professorAluno">
-                            <option v-for="(professor, index) in professores" :key="index" :value="professor">
+                        <select v-else v-model="professorAluno.id">
+                            <option v-for="(professor, index) in professores" :key="index" :value="professor.id">
                                 {{professor.nome}} {{professor.sobrenome}}</option>
                         </select>
                     </td>
@@ -55,6 +55,7 @@
 
 <script>
     import Titulo from "../_share/Titulo";
+    var urlApi = "http://localhost:5000/api";
     export default {
         components: {
             Titulo
@@ -69,14 +70,14 @@
             }
         },
         created() {
-            this.$http.get("http://localhost:3000/alunos/" + this.alunoId)
+            this.$http.get(`${urlApi}/aluno/${this.alunoId}`)
                 .then(res => res.json())
                 .then(aluno => {
                     this.aluno = aluno;
                     this.professorAluno = aluno.professor;
                 });
 
-            this.$http.get("http://localhost:3000/professores")
+            this.$http.get(`${urlApi}/professor`)
                 .then(res => res.json())
                 .then(professores => this.professores = professores);
         },
@@ -90,9 +91,14 @@
                     nome: this.aluno.nome,
                     sobrenome: this.aluno.sobrenome,
                     dataNasc: this.aluno.dataNasc,
-                    professor: this.professorAluno
+                    professorid: this.professorAluno.id
                 }
-                this.$http.put(`http://localhost:3000/alunos/${this.aluno.id}`, alunoEditar);
+                this.$http.put(`${urlApi}/aluno/${this.aluno.id}`, alunoEditar)
+                    .then(res => res.json())
+                    .then(aluno => {
+                        this.aluno = aluno;
+                        this.professorAluno = aluno.professor;
+                    });
                 this.cancelar();
             },
             cancelar() {

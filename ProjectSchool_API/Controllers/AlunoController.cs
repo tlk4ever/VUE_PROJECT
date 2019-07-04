@@ -69,7 +69,7 @@ namespace ProjectSchool_API.Controllers
                 _repo.Add(model);
                 
                 if(await _repo.SaveChangesAsync()){
-                    return Created($"/api/aluno/{model.Id}");
+                    return Created($"/api/aluno/{model.Id}",model);
                 }
                 
                 return BadRequest();
